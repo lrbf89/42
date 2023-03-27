@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_striteri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbufarde <lbufarde@42.roma.it>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 02:51:24 by lbufarde          #+#    #+#             */
-/*   Updated: 2023/03/25 03:31:25 by lbufarde         ###   ########.fr       */
+/*   Created: 2023/03/25 05:02:44 by lbufarde          #+#    #+#             */
+/*   Updated: 2023/03/25 05:03:31 by lbufarde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memalloc(size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	void	*newmem;
+	size_t	i;
 
-	newmem = (void *) malloc(size);
-	if (newmem == NULL)
-		return (NULL);
-	ft_bzero(newmem, size);
-	return (newmem);
+	i = 0;
+	if (s && f)
+	{
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
 }

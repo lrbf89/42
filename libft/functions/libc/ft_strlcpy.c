@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbufarde <lbufarde@42.roma.it>             +#+  +:+       +#+        */
+/*   By: lobufard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 02:25:06 by lbufarde          #+#    #+#             */
-/*   Updated: 2023/03/15 02:30:43 by lbufarde         ###   ########.fr       */
+/*   Created: 2023/03/27 12:37:47 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/27 13:34:36 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
+	size_t	srcsize;
 	size_t	i;
 
+	if (!dst || !src)
+		return (0);
+	srcsize = ft_strlen(src);
 	i = 0;
-	while (src[i] && i < n)
+	if (dstsize > 0)
 	{
-		dest[i] = src[i];
-		i ++;
+		while (src[i] && i < (dstsize - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (srcsize);
 }
