@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	char_for_n(int n)
+#include <stdlib.h>
+#include "libft.h"
+
+static size_t	char_for_n(int n)
 {
 	size_t	i;
 
@@ -23,7 +26,7 @@ size_t	char_for_n(int n)
 	return (i);
 }
 
-char	*core_itoa(long n, char *itoa, int sign)
+static char	*core_itoa(long n, char *itoa, int sign)
 {
 	int	i;
 

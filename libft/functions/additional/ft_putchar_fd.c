@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobufard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 14:34:26 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/27 14:34:31 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/30 17:28:49 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/30 18:01:56 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	if (s && f)
-	{
-		while (s[i])
-		{
-			f(i, &s[i]);
-			i++;
-		}
-	}
+	write(fd, &c, 1);
 }
