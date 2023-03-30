@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobufard <lobufard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:21:29 by lobufard          #+#    #+#             */
 /*   Updated: 2023/03/19 23:43:32 by lobufard         ###   ########.fr       */

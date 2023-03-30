@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobufard <lobufard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 03:05:25 by lobufard          #+#    #+#             */
 /*   Updated: 2023/03/15 04:06:36 by lobufard         ###   ########.fr       */
