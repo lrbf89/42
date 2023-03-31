@@ -17,6 +17,8 @@ static size_t	char_for_n(int n)
 	size_t	i;
 
 	i = 0;
+	if (n == 0)
+		return (i + 1);
 	while (n > 0)
 	{
 		n = n / 10;
@@ -29,8 +31,6 @@ static char	*core_itoa(long n, char *itoa, int sign)
 {
 	int	i;
 
-	if (n < 0)
-		n = -n;
 	i = char_for_n(n) + sign - 1;
 	while (i >= sign)
 	{
@@ -55,14 +55,17 @@ char	*ft_itoa(int n)
 		itoa = ft_strdup("-2147483648");
 		return (itoa);
 	}
+	if (n < 0)
+		n = -n;
 	itoa = (char *) malloc(char_for_n(n) + sign + 1);
 	if (itoa == NULL)
 		return (NULL);
 	if (sign == 1)
 		itoa[0] = '-';
 	core_itoa(n, itoa, sign);
-	if (n == 0)
-		itoa[0] = '0';
-	itoa[char_for_n(n) + 1] = '\0';
+	if (sign == 0)
+		itoa[char_for_n(n)] = '\0';
+	else
+		itoa[char_for_n(n) + 1] = '\0';
 	return (itoa);
 }

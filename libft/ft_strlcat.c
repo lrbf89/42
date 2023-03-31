@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 23:21:29 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/19 23:43:32 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/15 03:05:25 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/15 04:06:36 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*p;
-	unsigned char	byte;
+#include "libft.h"
 
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
+
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
 	i = 0;
-	p = s;
-	byte = '\0';
-	while (i < n)
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	while (src[i] && dst_len + i < dstsize - 1)
 	{
-		p[i] = byte;
-		i++;
+		dst[dst_len + i] = src[i];
+		i ++;
 	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }

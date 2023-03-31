@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 17:26:45 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/15 17:31:21 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/20 03:24:28 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/20 03:57:57 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include <stdlib.h>
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (c >= 1 && c <= 127)
-		return (c);
-	else
-		return (0);
+	const unsigned char	*ptr;
+	size_t				i;
+
+	ptr = s;
+	i = 0;
+	while (ptr[i] && i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+			return ((void *) &ptr[i]);
+		i++;
+	}
+	return (NULL);
 }

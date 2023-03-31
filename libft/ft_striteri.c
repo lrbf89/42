@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: lobufard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 04:17:29 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/15 15:46:59 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/27 14:34:26 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/27 14:34:31 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include <stdlib.h>
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	while (*s)
+	size_t	i;
+
+	i = 0;
+	if (s && f)
 	{
-		if (*s == (char)c)
-			return ((char *) s);
-		s++;
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
 	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
 }

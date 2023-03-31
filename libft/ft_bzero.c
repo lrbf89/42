@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 03:24:28 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/20 03:57:57 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/19 23:21:29 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/19 23:43:32 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	const unsigned char	*ptr;
-	size_t				i;
+#include <stdlib.h>
 
-	ptr = s;
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*p;
+	unsigned char	byte;
+
 	i = 0;
-	while (ptr[i] && i < n)
+	p = s;
+	byte = '\0';
+	while (i < n)
 	{
-		if (ptr[i] == (unsigned char)c)
-			return ((void *) &ptr[i]);
+		p[i] = byte;
 		i++;
 	}
-	return (NULL);
 }

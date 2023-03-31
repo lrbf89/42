@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 11:42:45 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/16 12:19:57 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/20 03:59:44 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/20 05:29:26 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t			i;
-	unsigned char	*p;
-	unsigned char	byte;
+#include <stdlib.h>
 
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char	*p1;
+	const unsigned char	*p2;
+	size_t				i;
+
+	p1 = s1;
+	p2 = s2;
 	i = 0;
-	p = s;
-	byte = c;
 	while (i < n)
 	{
-		p[i] = byte;
-		i++;
+		if (p1[i] != p2[i])
+			return (p1[i] - p2[i]);
+		i ++;
 	}
-	return (s);
+	return (0);
 }

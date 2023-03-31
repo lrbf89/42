@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 14:44:03 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/15 15:46:32 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/14 11:33:02 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/27 12:57:20 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	const char	*ptr;
+#include <stdlib.h>
 
-	ptr = NULL;
-	while (*s)
-	{
-		if (*s == (char)c)
-			ptr = s;
-		s++;
-	}
-	if ((char)c == '\0')
-	{
-		ptr = s;
-	}
-	return ((char *)ptr);
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i ++;
+	return (i);
 }

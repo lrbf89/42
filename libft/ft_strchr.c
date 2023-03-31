@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 16:21:58 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/15 16:32:46 by lobufard         ###   ########.fr       */
+/*   Created: 2023/03/15 04:17:29 by lobufard          #+#    #+#             */
+/*   Updated: 2023/03/15 15:46:59 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
+#include <stdlib.h>
 
-	i = 0;
-	j = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while (big[i] && i < len)
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
 	{
-		while (big[i + j] == little[j])
-		{
-			j ++;
-			if (little[j] == '\0')
-				return ((char *)&big[i]);
-		}
-		i ++;
-		j = 0;
+		if (*s == (char)c)
+			return ((char *) s);
+		s++;
 	}
+	if ((char)c == '\0')
+		return ((char *)s);
 	return (NULL);
 }
