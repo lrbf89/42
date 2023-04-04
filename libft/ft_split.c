@@ -6,7 +6,7 @@
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 14:10:03 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/04 13:27:31 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:40:25 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ char	**ft_split(const char *s, char c)
 {
 	char	**array;
 	size_t	i;
-	size_t	f;
 	size_t	k;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	i = 0;
 	array = (char **) malloc(sizeof(char *) * (nbr_of_substr(s, c) + 1));
 	if (array == NULL)
