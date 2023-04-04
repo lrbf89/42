@@ -6,7 +6,7 @@
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:21:58 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/15 16:32:46 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/04 13:23:40 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
-	if (*little == '\0')
+	if (len == 0 && big == NULL)
+		return (NULL);
+	if (*little == '\0' || little == NULL)
 		return ((char *)big);
 	while (big[i] && i < len)
 	{

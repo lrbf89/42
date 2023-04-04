@@ -6,11 +6,11 @@
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:33:02 by lobufard          #+#    #+#             */
-/*   Updated: 2023/03/27 12:57:20 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:01:16 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

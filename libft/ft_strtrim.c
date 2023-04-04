@@ -12,9 +12,8 @@
 
 #include "libft.h"
 #include <stdio.h>
-#include "ft_strlen.c"
-#include "ft_substr.c"
-#include "ft_strncmp.c"
+
+
 
 static int	found_in_set(char c, char const *set)
 {
@@ -51,10 +50,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (trim);
 }
 
-int main(void)
-{
-	char s1[] = "lorem ipsum dolor sit amet";
-	char set[] = "rlf";
+// int main(void)
+// {
+// 	char s1[] = "lorem ipsum dolor sit amet";
+// 	char set[] = "rlf";
 
-	printf("%s\n", ft_strtrim(s1, set));
-}
+// 	printf("%s\n", ft_strtrim(s1, set));
+// }
