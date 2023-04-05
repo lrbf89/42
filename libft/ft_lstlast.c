@@ -6,7 +6,7 @@
 /*   By: lobufard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:00:37 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/05 15:10:54 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:58:12 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst)
-		lst = lst -> next;
+	if (!lst)
+		return (lst);
+	while (lst->next)
+		lst = lst->next;
 	return (lst);
 }

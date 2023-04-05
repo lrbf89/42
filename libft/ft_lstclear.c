@@ -6,7 +6,7 @@
 /*   By: lobufard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:36:11 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/05 15:46:29 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:00:58 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*lstref;
+	t_list	*tmp;
 
 	if (!del || !lst)
 		return ;
-	while (*lst)
+	while (lst && *lst)
 	{
-		lstref = lst -> next;
-		del(lst);
-		free(lst);
-		*lst = lstref;
+		tmp = (*lst)-> next;
+		del((*lst)-> content);
+		free(*lst);
+		*lst = tmp;
 	}
 }
