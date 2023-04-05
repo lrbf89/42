@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stddef.h>
+# include <stdint.h>
 //part 1 - libc functions
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);

@@ -33,7 +33,7 @@ static size_t	nbr_of_substr(char const *s, char c)
 	return (nbr);
 }
 
-int	ft_free(char **array, int i)
+static int	ft_free(char **array, int i)
 {
 	if (array[i] == NULL)
 	{
