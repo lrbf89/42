@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:33:05 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/14 00:21:19 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/14 04:37:00 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i ++;
+	return (i + 1);
+}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -48,16 +58,6 @@ size_t	chrpos(const char *s, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i ++;
-	return (i + 1);
-}
-
 char	*ft_strdup(const char *s)
 {	
 	char	*str;
@@ -76,7 +76,7 @@ char	*ft_strdup(const char *s)
 	return (str);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sbstr;
@@ -132,15 +132,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (newstr);
 }
 
-char	*get_next_line(int fd)
+char	*get_line(int fd, char *line)
 {
-	static char	*line;
-	char		*buf_read;
-	char		*newline;
 	int		bytes_read;
-	int		bytes_left;
-	int		n;
-    int BUFFER_SIZE= 6;
+	char	*buf_read;
 
 	buf_read = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buf_read == NULL)
@@ -149,9 +144,31 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(line, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buf_read, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free(buf_read);
+			return (NULL);
+		}
 		buf_read[bytes_read] = '\0';
 		line = ft_strjoin(line, buf_read);
 	}
+	free(buf_read);
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*line;
+	char		*newline;
+	int			bytes_left;
+	int			n;
+	
+	line = malloc(1000);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	line = get_line(fd, line);
+	if (line == NULL)
+		return (NULL);
 	n = chrpos(line, '\n');
 	bytes_left = ft_strlen(line) - n;
 	newline = ft_substr(line, 0, n);
@@ -166,8 +183,5 @@ int	main(void)
 
 	fd = open("prova.txt", O_RDONLY);
 	get_next_line(fd);
-	get_next_line(fd);
-	get_next_line(fd);
-	return 0;
-
+	return (0);
 }
