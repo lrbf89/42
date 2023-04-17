@@ -44,7 +44,7 @@ char	*get_next_line(int fd)
 	int			n;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	line = get_line(fd, line);
 	if (line == NULL)
 		return (NULL);
