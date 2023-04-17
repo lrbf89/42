@@ -49,6 +49,8 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	n = chrpos(line, '\n');
+ if (!n)
+  return (line);
 	bytes_left = ft_strlen(line) - n;
 	newline = ft_substr(line, 0, n);
 	line = ft_substr(line, n, bytes_left);
