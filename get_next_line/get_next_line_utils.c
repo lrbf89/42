@@ -54,6 +54,24 @@ size_t	chrpos(const char *s, int c)
 	return (0);
 }
 
+char	*ft_strdup(const char *s)
+{	
+	char	*str;
+	size_t	i;
+
+	str = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = s[i];
+		i ++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -107,6 +125,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j] != '\0')
 		newstr[i++] = s2[j++];
 	newstr[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
 	return (newstr);
 }

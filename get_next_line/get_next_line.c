@@ -6,11 +6,16 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:33:05 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/14 09:24:32 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:13:56 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 #include "get_next_line.h"
+#include "get_next_line_utils.c"
 
 char	*get_line(int fd, char *line)
 {
@@ -21,7 +26,7 @@ char	*get_line(int fd, char *line)
 	if (buf_read == NULL)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(line, '\n') && bytes_read > 0)
+	while (!ft_strchr(line, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buf_read, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -52,5 +57,16 @@ char	*get_next_line(int fd)
 	bytes_left = ft_strlen(line) - n;
 	newline = ft_substr(line, 0, n);
 	line = ft_substr(line, n, bytes_left);
+	printf("FINAL = %s\n\n END function \n\n", newline);
 	return (newline);
+}
+
+int	main(void)
+{
+	char	fd;
+
+	fd = open("empty", O_RDONLY);
+	get_next_line(fd);
+	printf("\n\n EXIT \n\n");
+	return (0);
 }
