@@ -49,11 +49,13 @@ char	*get_next_line(int fd)
 	int			n;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	line = get_line(fd, line);
-	if (line == NULL)
+	if (line == NULL || line[0] == '\0')
 		return (NULL);
 	n = chrpos(line, '\n');
+ if (!n)
+  return (line);
 	bytes_left = ft_strlen(line) - n;
 	newline = ft_substr(line, 0, n);
 	line = ft_substr(line, n, bytes_left);
