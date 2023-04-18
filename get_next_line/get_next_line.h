@@ -26,7 +26,6 @@ char	*get_line(int fd, char *line);
 char	*get_next_line(int fd);
 
 //utils
-char	*ft_strchr(const char *s, int c);
 size_t	chrpos(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);

@@ -6,7 +6,7 @@
 /*   By: lobufard <lobufard@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 04:47:17 by lobufard          #+#    #+#             */
-/*   Updated: 2023/04/14 04:52:05 by lobufard         ###   ########.fr       */
+/*   Updated: 2023/04/19 00:47:43 by lobufard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,7 @@ size_t	ft_strlen(const char *s)
 	i = 0;
 	while (s[i])
 		i ++;
-	return (i + 1);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	if (!s)
-		return (NULL);
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *) s);
-		s++;
-	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
+	return (i);
 }
 
 size_t	chrpos(const char *s, int c)
@@ -42,34 +27,18 @@ size_t	chrpos(const char *s, int c)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] == (char)c)
 		{	
-			i++;
+			i ++;
 			return (i);
 		}
 		i ++;
 	}
 	return (0);
-}
-
-char	*ft_strdup(const char *s)
-{	
-	char	*str;
-	size_t	i;
-
-	str = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		str[i] = s[i];
-		i ++;
-	}
-	str[i] = '\0';
-	return (str);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
@@ -80,12 +49,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
-	{
-		sbstr = (char *) malloc(1);
-		sbstr[i] = '\0';
-		return (sbstr);
-	}
 	if (len < ft_strlen(s))
 		sbstr = (char *) malloc(sizeof(char) * len + 1);
 	else
@@ -98,6 +61,9 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		i ++;
 	}
 	sbstr[i] = '\0';
+	if (start == 0)
+		return (sbstr);
+	free(s);
 	return (sbstr);
 }
 
@@ -125,5 +91,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j] != '\0')
 		newstr[i++] = s2[j++];
 	newstr[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
+	s1 = NULL;
 	return (newstr);
 }
